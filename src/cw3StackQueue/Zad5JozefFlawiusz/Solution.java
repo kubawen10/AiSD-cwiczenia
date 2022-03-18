@@ -15,7 +15,7 @@ public class Solution {
         this.k = k;
         for (int i = 1; i <= n; i++) {
             list.add(i);
-        }
+        }//
     }
 
     public void eliminate(){
