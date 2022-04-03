@@ -15,5 +15,10 @@ public class Main {
         System.out.println(s.dequeue());
         System.out.println(s);
 
+        s.enqueue(3);
+        s.enqueue(4);
+        System.out.println(s.dequeue());
+        System.out.println(s);
+
     }
 }
