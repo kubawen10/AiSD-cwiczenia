@@ -15,7 +15,7 @@ import java.util.List;
 public class MergeSort<T> extends SortingAlgorithm<T> {
     private Comparator<? super T> comparator;
 
-    public MergeSort(Comparator<? super T> comparator){
+    public MergeSort(Comparator<? super T> comparator) {
         this.comparator = comparator;
     }
 
@@ -24,28 +24,24 @@ public class MergeSort<T> extends SortingAlgorithm<T> {
         IQueue<T> q1;
         IQueue<T> q2;
 
-        for (int i = 1; i < list.size(); i*=2) {
-            for (int j = 0; j < list.size(); j+=2*i) {
-                q1= new ArrayQueue<>(i);
+        for (int i = 1; i < list.size(); i *= 2) {
+            for (int j = 0; j < list.size(); j += 2 * i) {
+                q1 = new ArrayQueue<>(i);
                 q2 = new ArrayQueue<>(i);
 
-                for (int k = j; k < k+i; k++) {
+                int beginK = j;
+
+                for (int k = beginK; k < beginK + i; k++) {
                     q1.enqueue(list.get(k));
                 }
 
-                for (int k = j+i; k < k+i; k++) {
+                beginK = beginK + i;
+                for (int k = beginK + i; k < beginK + i; k++) {
                     q2.enqueue(list.get(k));
                 }
 
-
             }
-            
-            
-
-            
-
         }
-
         return null;
     }
 
@@ -53,16 +49,14 @@ public class MergeSort<T> extends SortingAlgorithm<T> {
         List<T> retList = new LinkedList<>();
         T val1;
         T val2;
-        while(!q1.isEmpty() || !q2.isEmpty()){
-            if(!q1.isEmpty()){
-                val1=q1.dequeue();
-            }
-            else val1 = null;
+        while (!q1.isEmpty() || !q2.isEmpty()) {
+            if (!q1.isEmpty()) {
+                val1 = q1.dequeue();
+            } else val1 = null;
 
-            if (!q2.isEmpty()){
-                val2=q2.dequeue();
-            }
-            else val2 = null;
+            if (!q2.isEmpty()) {
+                val2 = q2.dequeue();
+            } else val2 = null;
 
 
             boolean b = (comparator.compare(val1, val2)) > 0 ? retList.add(val2) : retList.add(val1);
