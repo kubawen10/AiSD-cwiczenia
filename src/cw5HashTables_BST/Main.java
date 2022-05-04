@@ -6,12 +6,13 @@ public class Main {
     public static void main(String[] args) {
         BST<Integer> b = new BST<>(new IntegerComparator());
         b.insert(5);
+        b.insert(4);
         b.insert(3);
         b.insert(2);
-        b.insert(4);
-        b.insert(8);
+        b.insert(1);
         b.insert(6);
         b.insert(7);
+        b.insert(8);
         b.insert(9);
 
 
@@ -26,6 +27,14 @@ public class Main {
 //        System.out.println( b.inOrderWalk());
 //        System.out.println( b.postOrderWalk());
 
-        System.out.println(b.printLevels());
+//        System.out.println(b.printLevels());
+//        System.out.println(b.countNodes());
+//        System.out.println(b.height());
+//        System.out.println(b.countOneChildNodes());
+//        System.out.println(b.countOneBroNodes());
+
+        System.out.println(b.evenKeyNodes());
     }
+
+
 }

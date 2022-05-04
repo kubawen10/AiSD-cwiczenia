@@ -227,4 +227,95 @@ public class BST<T> {
         return s.substring(0, s.length() - 1);
     }
 
+    public int countNodes() {
+        return countNodes(root);
+    }
+
+    private int countNodes(Node n) {
+        if (n == null) {
+            return 0;
+        }
+
+        return 1 + countNodes(n.getLeft()) + countNodes(n.getRight());
+    }
+
+    public int height() {
+        return height(root);
+    }
+
+    private int height(Node n) {
+        if (n == null) {
+            return 0;
+        }
+
+        int leftH = height(n.getLeft());
+        int rightH = height(n.getRight());
+
+        return 1 + (Math.max(leftH, rightH));
+    }
+
+    public int evenKeyNodes() {
+        return evenKeyNodes(root);
+    }
+
+    private int evenKeyNodes(Node<T> n) {
+        if (n == null) {
+            return 0;
+        }
+
+        int sum = 0;
+
+        if (isEven(n.getValue())) {
+            sum = 1;
+        }
+
+        return sum + evenKeyNodes(n.getLeft()) + evenKeyNodes(n.getRight());
+    }
+
+    private boolean isEven(T val){
+        if(val instanceof Integer){
+            return (Integer) val % 2 == 0;
+        }
+        return false;
+    }
+
+    public int countOneChildNodes() {
+        return countOneChildNodes(root);
+    }
+
+    private int countOneChildNodes(Node n) {
+        if (n == null) {
+            return 0;
+        }
+
+        int sum = 0;
+
+        if ((n.getRight() == null && n.getLeft() != null) || (n.getLeft() == null && n.getRight() != null)) {
+            sum = 1;
+        }
+
+        sum += countOneChildNodes(n.getRight()) + countOneChildNodes(n.getLeft());
+
+        return sum;
+    }
+
+    public int countOneBroNodes() {
+        return countOneBroNodes(root);
+    }
+
+    private int countOneBroNodes(Node n) {
+        if (n == null) {
+            return 0;
+        }
+
+        int sum = 0;
+
+        if (n.getRight() != null && n.getLeft() != null) {
+            sum = 2;
+        }
+
+        sum += countOneBroNodes(n.getRight()) + countOneBroNodes(n.getLeft());
+
+        return sum;
+    }
 }
