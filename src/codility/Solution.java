@@ -74,9 +74,9 @@ public class Solution {
         return Math.abs(a - b);
     }
 
-    public int calculateFuel(int [] X, int curFuel, int from, int to){
-        if(from ==-1 || to ==-1) return curFuel;
+    public int calculateFuel(int[] X, int curFuel, int from, int to) {
+        if (from == -1 || to == -1) return curFuel;
 
-        return curFuel-distance(X[from], X[to]);
+        return curFuel - distance(X[from], X[to]);
     }
 }
